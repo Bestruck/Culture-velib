@@ -55,6 +55,15 @@ $options = array(
 foreach ( $options as $cle => $valeur ) {
 	update_option( $cle, $valeur );
 }
+// Adresses en français : /produit/velo-de-ville-kleber/ plutôt que /product/...
+update_option(
+	'woocommerce_permalinks',
+	array_merge(
+		(array) get_option( 'woocommerce_permalinks', array() ),
+		array( 'product_base' => 'produit', 'category_base' => 'categorie', 'tag_base' => 'etiquette' )
+	)
+);
+flush_rewrite_rules();
 WP_CLI::success( count( $options ) . ' réglages appliqués.' );
 
 /* ---------- 2. TVA française 20 % ---------- */
