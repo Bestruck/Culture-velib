@@ -1,8 +1,8 @@
-# Charte — Rayons d'Ill
+# Charte — Culture Vélib
 
 > Client fictif. Nom, adresse, e-mails et SIRET sont inventés.
 
-**Rayons d'Ill** est un magasin-atelier de vélos du quartier de la Krutenau, à Strasbourg
+**Culture Vélib** est un magasin-atelier de vélos du quartier de la Krutenau, à Strasbourg
 (fictif : 12 quai des Bateliers, 67000 Strasbourg). On y vend des vélos de ville, des vélos à
 assistance électrique et des cargos pour les familles, des accessoires, et on y répare tout ce qui roule. Strasbourg est la
 ville la plus cyclable de France : la boutique parle aux gens qui vont au travail à vélo tous les jours,
