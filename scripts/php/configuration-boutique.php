@@ -43,6 +43,9 @@ $options = array(
 	'woocommerce_notify_no_stock_amount'      => 0,
 	'woocommerce_hide_out_of_stock_items'     => 'no',
 	'woocommerce_enable_coupons'              => 'yes',
+	// Boutique en ligne : sinon un visiteur non connecté ne voit qu'une page « Bientôt disponible ».
+	'woocommerce_coming_soon'                 => 'no',
+	'woocommerce_store_pages_only'            => 'no',
 	// E-mails aux couleurs de la charte.
 	'woocommerce_email_from_name'             => "Culture Vélib",
 	'woocommerce_email_from_address'          => 'bonjour@culture-velib.example',
