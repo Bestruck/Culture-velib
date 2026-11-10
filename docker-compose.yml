@@ -1,0 +1,56 @@
+# Reconstruit la boutique Rayons d'Ill à partir du dépôt (partie 7).
+# Les mots de passe viennent du fichier .env (copié depuis .env.example, jamais versionné).
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${MYSQL_DATABASE}
+      MARIADB_USER: ${MYSQL_USER}
+      MARIADB_PASSWORD: ${MYSQL_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      retries: 20
+
+  wordpress:
+    image: wordpress:7.0-php8.3-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WP_PORT:-8080}:80"
+    environment: &wp_env
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - wp_data:/var/www/html
+      - ./theme/rayons-dill:/var/www/html/wp-content/themes/rayons-dill
+      - ./extension/rayons-bandeau:/var/www/html/wp-content/plugins/rayons-bandeau
+
+  cli:
+    image: wordpress:cli-php8.3
+    profiles: ["outils"]   # lancé seulement avec « docker compose run cli … »
+    user: "33:33"          # www-data, comme le conteneur wordpress
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      <<: *wp_env
+      WP_CLI_CACHE_DIR: /tmp/wp-cli-cache
+    volumes:
+      - wp_data:/var/www/html
+      - ./theme/rayons-dill:/var/www/html/wp-content/themes/rayons-dill
+      - ./extension/rayons-bandeau:/var/www/html/wp-content/plugins/rayons-bandeau
+      - ./sauvegardes:/sauvegardes
+      - ./:/projet:ro
+
+volumes:
+  db_data:
+  wp_data:
