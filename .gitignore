@@ -1,0 +1,22 @@
+# Secrets
+.env
+*.env.local
+
+# Cœur de WordPress et extensions tierces : ça se réinstalle
+wordpress/
+wp-admin/
+wp-includes/
+wp-content/
+!theme/
+wp-config.php
+
+# Sauvegardes : on ne garde que la démonstration
+sauvegardes/*
+!sauvegardes/.gitkeep
+!sauvegardes/demo/
+
+# Outils
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
