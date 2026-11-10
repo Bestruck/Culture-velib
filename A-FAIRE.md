@@ -8,7 +8,7 @@ Il reste ce qui se fait à la souris, et ce qui doit venir de vous.
 - [ ] Remplacer `NOM Prénom` dans `README.md` et `NOTE.md`. Relire la note et la reformuler avec vos mots.
 - [ ] Créer le dépôt GitHub, `git remote add origin …`, `git push -u origin main`, inviter le groupe.
 - [ ] Installer **Local** (localwp.com), créer le site `boutique` (adresse `http://boutique.local`),
-      administrateur **`gerance-rdi`** (pas `admin`).
+      administrateur **`gerance-cv`** (pas `admin`).
 - [ ] Local > clic droit > *Open site shell*, aller à la racine du dépôt, puis :
       `"C:\Program Files\Git\bin\bash.exe" scripts/configuration-boutique.sh`
 
@@ -24,8 +24,8 @@ Il reste ce qui se fait à la souris, et ce qui doit venir de vous.
 - [ ] Retoucher les modèles *Produit unique* et *Catalogue de produits* ; noter le pourquoi dans le README.
 - [ ] Vérifier à 390 px (outils de développement du navigateur).
 - [ ] Logo PNG dans WooCommerce > Réglages > E-mails (image d'en-tête).
-- [ ] Extension *Create Block Theme* > Exporter le thème, nom **Rayons d'Ill**, dézipper dans
-      `theme/rayons-dill/` (le dossier monté par Docker), commit.
+- [ ] Extension *Create Block Theme* > Exporter le thème, nom **Culture Vélib**, dézipper dans
+      `theme/culture-velib/` (le dossier monté par Docker), commit.
 
 ## Semaine 3 (23–29/11) — vendre
 - [ ] Stripe en mode test (voir README partie 4). Clés de test : jamais dans Git.

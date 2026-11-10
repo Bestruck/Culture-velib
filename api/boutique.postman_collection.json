@@ -1,6 +1,6 @@
 {
   "info": {
-    "name": "Rayons d'Ill — Store API WooCommerce",
+    "name": "Culture Vélib — Store API WooCommerce",
     "description": "Parcours d'achat complet par l'API : catalogue, panier, ajout, commande, puis preuve que l'API d'administration est protégée. Lancer les requêtes dans l'ordre (Run collection).",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },

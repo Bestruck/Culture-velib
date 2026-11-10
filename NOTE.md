@@ -1,4 +1,4 @@
-# Note de cadrage — Rayons d'Ill
+# Note de cadrage — Culture Vélib
 
 *Magasin-atelier de vélos fictif à Strasbourg. Groupe : NOM 1, NOM 2, NOM 3.*
 
@@ -92,7 +92,7 @@ Chaque changement envoie un e-mail (client et/ou marchand) et ajoute une note à
 
 ## 4. Notre arbitrage : WooCommerce
 
-Pour Rayons d'Ill (une trentaine de références, un vendeur, ventes surtout locales), **WooCommerce**.
+Pour Culture Vélib (une trentaine de références, un vendeur, ventes surtout locales), **WooCommerce**.
 
 1. **Délai.** Notre boutique Strapi n'avait après plusieurs semaines ni prix, ni stock, ni TVA, ni
    paiement. Avec WooCommerce, catalogue, TVA, livraison, paiement test et e-mails tiennent en

@@ -1,4 +1,4 @@
-# Rayons d'Ill — boutique WooCommerce
+# Culture Vélib — boutique WooCommerce
 
 Magasin-atelier de vélos **fictif** à Strasbourg : vélos de ville, électriques et cargos, accessoires,
 révisions. Projet B3.2 CMS, e-commerce & mobile — IRIS Mastère 1.
@@ -13,7 +13,7 @@ révisions. Projet B3.2 CMS, e-commerce & mobile — IRIS Mastère 1.
 | [`catalogue/`](catalogue/) | Les 14 produits (CSV) et la source de chaque photo |
 | [`api/`](api/boutique.postman_collection.json) | Collection Postman de la Store API |
 | [`scripts/`](scripts/) | Configuration, import des photos, sauvegarde, restauration |
-| [`extension/`](extension/rayons-bandeau/rayons-bandeau.php), [`webhook/`](webhook/) | Bonus |
+| [`extension/`](extension/culture-velib-bandeau/culture-velib-bandeau.php), [`webhook/`](webhook/) | Bonus |
 
 ## Captures
 
@@ -54,14 +54,14 @@ bash scripts/images-catalogue.sh         # photos + textes alternatifs + galerie
 Avec Docker, préfixer par `WP="docker compose run --rm -T cli wp" PROJET=/projet`.
 Les deux scripts sont rejouables : ils mettent à jour sans créer de doublons.
 
-Puis activer le thème exporté : Apparence > Thèmes > **Rayons d'Ill**.
+Puis activer le thème exporté : Apparence > Thèmes > **Culture Vélib**.
 
 ---
 
 ## Partie 2 — Identité et design
 
 Thème en blocs dérivé de Twenty Twenty-Five, modifié dans **Apparence > Éditeur**, exporté avec
-l'extension *Create Block Theme* dans [`theme/rayons-dill/`](theme/).
+l'extension *Create Block Theme* dans [`theme/culture-velib/`](theme/).
 
 - **Styles** : palette Vert Ill `#1F4D45`, Grès rose `#B8503A`, Crème `#F5EFE4` ; titres en
   Bricolage Grotesque, texte en Inter (bibliothèque de polices de WordPress). Réglés une seule fois
@@ -77,7 +77,7 @@ l'extension *Create Block Theme* dans [`theme/rayons-dill/`](theme/).
 - **E-mails** (WooCommerce > Réglages > E-mails) : couleurs de la charte appliquées par
   `configuration-boutique.php`, logo PNG en image d'en-tête.
 - **Bonus extension maison** : bandeau « Livraison offerte dès 80 € » qui affiche ce qu'il reste à
-  ajouter au panier ([47 lignes](extension/rayons-bandeau/rayons-bandeau.php)).
+  ajouter au panier ([47 lignes](extension/culture-velib-bandeau/culture-velib-bandeau.php)).
 
 ## Partie 3 — Le catalogue
 
@@ -89,7 +89,7 @@ l'extension *Create Block Theme* dans [`theme/rayons-dill/`](theme/).
 | Produit variable | Vélo de ville « Kléber » : 2 attributs (Taille S/M/L, Couleur Vert Ill/Grès rose), 6 variations avec prix et stock propres ; L Grès rose à 0 |
 | Promotion datée | Antivol en U : 59,90 € → 44,90 € du 20/11 au 31/12/2026 |
 | Rupture volontaire | Vélo enfant « Moustique », stock 0 |
-| UGS et stock | UGS `RDI-…` sur chaque produit et variation, stock géré partout |
+| UGS et stock | UGS `CV-…` sur chaque produit et variation, stock géré partout |
 | Galeries | Kléber (3 photos), Krutenau (2), Petite France (2) |
 
 ### Sources des photos
@@ -150,7 +150,7 @@ ne donne que les noms des variables.
 
 | Mesure | Risque couvert |
 |---|---|
-| Administrateur nommé `gerance-rdi`, jamais `admin`, et utilisateurs masqués de l'API REST (`/wp/v2/users`) | Attaque par force brute : l'attaquant doit deviner l'identifiant **et** le mot de passe |
+| Administrateur nommé `gerance-cv`, jamais `admin`, et utilisateurs masqués de l'API REST (`/wp/v2/users`) | Attaque par force brute : l'attaquant doit deviner l'identifiant **et** le mot de passe |
 | Double authentification (extension *Two-Factor*) pour les comptes administrateur et gestionnaire | Mot de passe volé par hameçonnage ou réutilisé d'un autre site |
 | Limitation des tentatives de connexion (*Limit Login Attempts Reloaded*) | Essais automatisés de milliers de mots de passe sur `wp-login.php` et `xmlrpc.php` |
 | Mises à jour automatiques du cœur et des extensions de sécurité, extensions inutiles supprimées | Exploitation d'une faille connue et corrigée dans une ancienne version |
@@ -193,7 +193,7 @@ utilisateur dans *Bases de données MySQL* ; on importe le `.sql` dans **phpMyAd
 de base, utilisateur et mot de passe dans **`wp-config.php`** ; on change l'adresse avec l'extension
 *Better Search Replace* (qui gère la sérialisation comme `wp search-replace`) ; on active le
 **certificat HTTPS** gratuit (AutoSSL / Let's Encrypt) puis on force la redirection en HTTPS.
-**Mutualisé** pour un petit commerce comme Rayons d'Ill : quelques euros par mois, sauvegardes et
+**Mutualisé** pour un petit commerce comme Culture Vélib : quelques euros par mois, sauvegardes et
 certificat gérés par l'hébergeur, aucune administration système. **Docker sur un VPS** quand on veut un
 environnement identique du poste au serveur, des restaurations scriptées et testables, ou plusieurs
 sites isolés — au prix de la maintenance du serveur.
@@ -211,7 +211,7 @@ dépend que de WP-CLI et de la ligne de commande.
 
 ## Bonus
 
-- **Extension maison** : [`extension/rayons-bandeau`](extension/rayons-bandeau/rayons-bandeau.php),
+- **Extension maison** : [`extension/culture-velib-bandeau`](extension/culture-velib-bandeau/culture-velib-bandeau.php),
   bandeau « livraison offerte » qui calcule le reste à ajouter (47 lignes).
 - **Webhook « Commande créée »** : [`webhook/recepteur.mjs`](webhook/recepteur.mjs) vérifie la
   signature HMAC-SHA256 (`X-WC-Webhook-Signature`) et affiche les commandes sur <http://localhost:4000>.
