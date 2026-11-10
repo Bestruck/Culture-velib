@@ -33,6 +33,7 @@ services:
       - wp_data:/var/www/html
       - ./theme/rayons-dill:/var/www/html/wp-content/themes/rayons-dill
       - ./extension/rayons-bandeau:/var/www/html/wp-content/plugins/rayons-bandeau
+      - ./webhook/autoriser-hote-docker.php:/var/www/html/wp-content/mu-plugins/autoriser-hote-docker.php:ro
 
   cli:
     image: wordpress:cli-php8.3
@@ -48,6 +49,7 @@ services:
       - wp_data:/var/www/html
       - ./theme/rayons-dill:/var/www/html/wp-content/themes/rayons-dill
       - ./extension/rayons-bandeau:/var/www/html/wp-content/plugins/rayons-bandeau
+      - ./webhook/autoriser-hote-docker.php:/var/www/html/wp-content/mu-plugins/autoriser-hote-docker.php:ro
       - ./sauvegardes:/sauvegardes
       - ./:/projet:ro
 
