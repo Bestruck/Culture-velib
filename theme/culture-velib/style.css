@@ -62,4 +62,22 @@ Text Domain: culture-velib
 	.cv-masque-mobile {
 		display: none;
 	}
+
+	/* Cartes produits à deux colonnes : boutons compacts sur une ligne, titres plus petits */
+	.wc-block-product .wc-block-components-product-button__button {
+		padding: 0.55rem 0.75rem;
+		font-size: 0.8rem;
+		line-height: 1.2;
+		width: auto;
+		min-height: 0;
+	}
+	.wc-block-product .wc-block-components-product-button {
+		margin-bottom: var(--wp--preset--spacing--10) !important;
+	}
+	.wc-block-product .wp-block-post-title {
+		font-size: 0.95rem !important;
+	}
+	.wc-block-product .wc-block-components-product-price {
+		font-size: 1rem !important;
+	}
 }
