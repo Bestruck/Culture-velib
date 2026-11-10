@@ -57,20 +57,30 @@ Text Domain: culture-velib
 	font-weight: 800;
 }
 
+/* Boutons des cartes produits compacts, sur une seule ligne quelle que soit la largeur des cartes */
+.wc-block-product .wc-block-components-product-button__button {
+	padding: 0.6rem 0.9rem;
+	line-height: 1.2;
+	white-space: nowrap;
+	min-height: 0;
+}
+
 /* Sur téléphone, le grand logo de la bannière ferait doublon avec celui de l'en-tête */
 @media (max-width: 781px) {
 	.cv-masque-mobile {
 		display: none;
 	}
 
-	/* Cartes produits à deux colonnes : boutons compacts sur une ligne, titres plus petits */
+	/* Cartes produits à deux colonnes (153 px) : bouton un peu plus petit pour tenir sur une ligne */
 	.wc-block-product .wc-block-components-product-button__button {
-		padding: 0.55rem 0.75rem;
-		font-size: 0.8rem;
-		line-height: 1.2;
-		width: auto;
-		min-height: 0;
+		padding: 0.6rem 0.5rem;
+		font-size: 0.8rem !important;
 	}
+	.wc-block-product .wc-block-components-product-button__button span {
+		white-space: nowrap;
+	}
+
+	/* Titres et prix plus petits */
 	.wc-block-product .wc-block-components-product-button {
 		margin-bottom: var(--wp--preset--spacing--10) !important;
 	}
