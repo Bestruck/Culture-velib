@@ -1,0 +1,13 @@
+/* Culture Vélib — charte couleurs */
+:root {
+  --cv-bleu-nuit: #0D1B2A;
+  --cv-bleu: #0099FF;
+  --cv-cyan: #40C9FF;
+  --cv-gris-clair: #E9EEF2;
+  --cv-anthracite: #222222;
+  --cv-blanc: #FFFFFF;
+  --cv-font: 'Montserrat', Arial, sans-serif;
+}
+body { font-family: var(--cv-font); color:var(--cv-bleu-nuit); background: var(--cv-blanc); }
+a { color:var(--cv-bleu); }
+.btn-cv { background: var(--cv-bleu); color: white; border:0; border-radius: 8px; padding:12px 22px; }

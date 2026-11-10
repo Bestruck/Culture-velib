@@ -1,0 +1,21 @@
+CULTURE VÉLIB — KIT IDENTITÉ VISUELLE
+===================================
+Projet pédagogique de site vitrine, sans affiliation officielle à Culture Vélo ou Vélib’.
+
+01_planche : planche graphique originale complète (PNG).
+02_logos_png : extraits découpés de la planche (avec leurs fonds d'origine).
+03_logos_svg : versions vectorielles RECRÉÉES, transparentes et redimensionnables ; elles sont des adaptations simplifiées et non des tracés exacts de la planche.
+04_web : couleurs CSS + exemple de page HTML.
+05_icones_png : icônes découpées de la planche, fonds inclus.
+
+PALETTE
+#0D1B2A bleu nuit ; #0099FF bleu ; #40C9FF cyan ; #E9EEF2 gris clair ; #222222 anthracite.
+Police conseillée : Montserrat (fallback Arial).
+
+UTILISATION CONSEILLÉE
+- Menu du site : 03_logos_svg/logo_horizontal_clair.svg
+- Pied de page sombre : 03_logos_svg/logo_horizontal_sombre.svg
+- Favicon : 03_logos_svg/monogramme_cv_clair.svg
+- Présentation scolaire : 01_planche/planche_identite_complete.png
+
+NOTE : Les extraits PNG ne sont pas transparents. Les SVG ont un fond transparent.
