@@ -1,19 +1,19 @@
 fichier;sku;role;alt;auteur;source
-kleber-1.jpg;RDI-VEL-KLEBER;principale;Vélo de ville vert avec garde-boue et porte-bagages, de profil;A_COMPLETER;A_COMPLETER
-kleber-2.jpg;RDI-VEL-KLEBER;galerie;Détail du moyeu à vitesses intégrées du vélo Kléber;A_COMPLETER;A_COMPLETER
-kleber-3.jpg;RDI-VEL-KLEBER;galerie;Vélo Kléber garé le long d'un quai;A_COMPLETER;A_COMPLETER
-krutenau-1.jpg;RDI-VEL-KRUTENAU;principale;Vélo électrique urbain à cadre bas, de profil;A_COMPLETER;A_COMPLETER
-krutenau-2.jpg;RDI-VEL-KRUTENAU;galerie;Batterie amovible du vélo électrique Krutenau;A_COMPLETER;A_COMPLETER
-cargo-1.jpg;RDI-VEL-CARGO;principale;Vélo cargo biporteur avec caisse en bois à l'avant;A_COMPLETER;A_COMPLETER
-cargo-2.jpg;RDI-VEL-CARGO;galerie;Caisse du biporteur avec banquette pour deux enfants;A_COMPLETER;A_COMPLETER
-vosges-1.jpg;RDI-VEL-VOSGES;principale;Vélo gravel sur un chemin forestier;A_COMPLETER;A_COMPLETER
-moustique-1.jpg;RDI-VEL-MOUSTIQUE;principale;Vélo enfant 20 pouces de couleur vive;A_COMPLETER;A_COMPLETER
-antivol-1.jpg;RDI-ACC-ANTIVOL;principale;Antivol en U noir attaché à un arceau;A_COMPLETER;A_COMPLETER
-casque-1.jpg;RDI-ACC-CASQUE;principale;Casque de vélo urbain mat avec visière;A_COMPLETER;A_COMPLETER
-eclairage-1.jpg;RDI-ACC-ECLAIRAGE;principale;Feux avant et arrière de vélo rechargeables;A_COMPLETER;A_COMPLETER
-sacoche-1.jpg;RDI-ACC-SACOCHE;principale;Sacoche étanche fixée sur un porte-bagages;A_COMPLETER;A_COMPLETER
-panier-1.jpg;RDI-ACC-PANIER;principale;Panier en osier fixé au guidon d'un vélo;A_COMPLETER;A_COMPLETER
-revision-1.jpg;RDI-ATL-REVISION;principale;Mécanicien réglant les freins d'un vélo sur un pied d'atelier;A_COMPLETER;A_COMPLETER
-chambre-1.jpg;RDI-ATL-CHAMBRE;principale;Chambre à air de vélo enroulée;A_COMPLETER;A_COMPLETER
-pneu-1.jpg;RDI-ATL-PNEU;principale;Pneu de vélo de ville vu de près;A_COMPLETER;A_COMPLETER
-entretien-1.jpg;RDI-ATL-ENTRETIEN;principale;Chaîne de vélo propre et lubrifiée en gros plan;A_COMPLETER;A_COMPLETER
+kleber-1.jpg;CV-VEL-KLEBER;principale;Vélo de ville vert avec garde-boue et porte-bagages, de profil;A_COMPLETER;A_COMPLETER
+kleber-2.jpg;CV-VEL-KLEBER;galerie;Détail du moyeu à vitesses intégrées du vélo Kléber;A_COMPLETER;A_COMPLETER
+kleber-3.jpg;CV-VEL-KLEBER;galerie;Vélo Kléber garé le long d'un quai;A_COMPLETER;A_COMPLETER
+krutenau-1.jpg;CV-VEL-KRUTENAU;principale;Vélo électrique urbain à cadre bas, de profil;A_COMPLETER;A_COMPLETER
+krutenau-2.jpg;CV-VEL-KRUTENAU;galerie;Batterie amovible du vélo électrique Krutenau;A_COMPLETER;A_COMPLETER
+cargo-1.jpg;CV-VEL-CARGO;principale;Vélo cargo biporteur avec caisse en bois à l'avant;A_COMPLETER;A_COMPLETER
+cargo-2.jpg;CV-VEL-CARGO;galerie;Caisse du biporteur avec banquette pour deux enfants;A_COMPLETER;A_COMPLETER
+vosges-1.jpg;CV-VEL-VOSGES;principale;Vélo gravel sur un chemin forestier;A_COMPLETER;A_COMPLETER
+moustique-1.jpg;CV-VEL-MOUSTIQUE;principale;Vélo enfant 20 pouces de couleur vive;A_COMPLETER;A_COMPLETER
+antivol-1.jpg;CV-ACC-ANTIVOL;principale;Antivol en U noir attaché à un arceau;A_COMPLETER;A_COMPLETER
+casque-1.jpg;CV-ACC-CASQUE;principale;Casque de vélo urbain mat avec visière;A_COMPLETER;A_COMPLETER
+eclairage-1.jpg;CV-ACC-ECLAIRAGE;principale;Feux avant et arrière de vélo rechargeables;A_COMPLETER;A_COMPLETER
+sacoche-1.jpg;CV-ACC-SACOCHE;principale;Sacoche étanche fixée sur un porte-bagages;A_COMPLETER;A_COMPLETER
+panier-1.jpg;CV-ACC-PANIER;principale;Panier en osier fixé au guidon d'un vélo;A_COMPLETER;A_COMPLETER
+revision-1.jpg;CV-ATL-REVISION;principale;Mécanicien réglant les freins d'un vélo sur un pied d'atelier;A_COMPLETER;A_COMPLETER
+chambre-1.jpg;CV-ATL-CHAMBRE;principale;Chambre à air de vélo enroulée;A_COMPLETER;A_COMPLETER
+pneu-1.jpg;CV-ATL-PNEU;principale;Pneu de vélo de ville vu de près;A_COMPLETER;A_COMPLETER
+entretien-1.jpg;CV-ATL-ENTRETIEN;principale;Chaîne de vélo propre et lubrifiée en gros plan;A_COMPLETER;A_COMPLETER

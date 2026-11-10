@@ -49,7 +49,7 @@ fi
 wp plugin install woocommerce --activate
 wp language core install fr_FR --activate || true
 wp language plugin install woocommerce fr_FR || true
-wp plugin activate rayons-bandeau || true
+wp plugin activate culture-velib-bandeau || true
 wp rewrite flush
 wp cache flush
 

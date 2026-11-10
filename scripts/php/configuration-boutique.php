@@ -1,6 +1,6 @@
 <?php
 /**
- * Configuration WooCommerce de Rayons d'Ill (parties 3 et 4).
+ * Configuration WooCommerce de Culture Vélib (parties 3 et 4).
  * Lancé par scripts/configuration-boutique.sh :
  *   wp eval-file scripts/php/configuration-boutique.php <racine-du-depot>
  * Le script est rejouable : il ne crée rien en double.
@@ -14,7 +14,7 @@ $racine = rtrim( $args[0] ?? dirname( __DIR__, 2 ), '/\\' );
 
 /* ---------- 1. Réglages généraux, prix TTC, stock, e-mails ---------- */
 $options = array(
-	'blogname'                                => "Rayons d'Ill",
+	'blogname'                                => "Culture Vélib",
 	'blogdescription'                         => "Roule en ville, on s'occupe du reste.",
 	'timezone_string'                         => 'Europe/Paris',
 	'woocommerce_store_address'               => '12 quai des Bateliers',
@@ -44,13 +44,13 @@ $options = array(
 	'woocommerce_hide_out_of_stock_items'     => 'no',
 	'woocommerce_enable_coupons'              => 'yes',
 	// E-mails aux couleurs de la charte.
-	'woocommerce_email_from_name'             => "Rayons d'Ill",
-	'woocommerce_email_from_address'          => 'bonjour@rayons-dill.example',
+	'woocommerce_email_from_name'             => "Culture Vélib",
+	'woocommerce_email_from_address'          => 'bonjour@culture-velib.example',
 	'woocommerce_email_base_color'            => '#1F4D45',
 	'woocommerce_email_background_color'      => '#F5EFE4',
 	'woocommerce_email_body_background_color' => '#FFFFFF',
 	'woocommerce_email_text_color'            => '#1C1C1A',
-	'woocommerce_email_footer_text'           => "Rayons d'Ill · 12 quai des Bateliers, 67000 Strasbourg · Roule en ville, on s'occupe du reste.",
+	'woocommerce_email_footer_text'           => "Culture Vélib · 12 quai des Bateliers, 67000 Strasbourg · Roule en ville, on s'occupe du reste.",
 );
 foreach ( $options as $cle => $valeur ) {
 	update_option( $cle, $valeur );
@@ -134,7 +134,7 @@ update_option(
 	'woocommerce_bacs_accounts',
 	array(
 		array(
-			'account_name'   => "Rayons d'Ill SARL (compte fictif)",
+			'account_name'   => "Culture Vélib SARL (compte fictif)",
 			'account_number' => '',
 			'bank_name'      => 'Banque fictive',
 			'sort_code'      => '',
@@ -193,5 +193,5 @@ if ( isset( $ids['conditions-generales-de-vente'] ) ) {
 if ( isset( $ids['politique-de-confidentialite'] ) ) {
 	update_option( 'wp_page_for_privacy_policy', $ids['politique-de-confidentialite'] );
 }
-update_option( 'woocommerce_checkout_terms_and_conditions_checkbox_text', "J'ai lu et j'accepte les [terms] de Rayons d'Ill." );
+update_option( 'woocommerce_checkout_terms_and_conditions_checkbox_text', "J'ai lu et j'accepte les [terms] de Culture Vélib." );
 WP_CLI::success( count( $ids ) . ' pages légales publiées ; CGV et confidentialité reliées à WooCommerce.' );

@@ -1,4 +1,4 @@
-# Reconstruit la boutique Rayons d'Ill à partir du dépôt (partie 7).
+# Reconstruit la boutique Culture Vélib à partir du dépôt (partie 7).
 # Les mots de passe viennent du fichier .env (copié depuis .env.example, jamais versionné).
 services:
   db:
@@ -31,8 +31,8 @@ services:
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - wp_data:/var/www/html
-      - ./theme/rayons-dill:/var/www/html/wp-content/themes/rayons-dill
-      - ./extension/rayons-bandeau:/var/www/html/wp-content/plugins/rayons-bandeau
+      - ./theme/culture-velib:/var/www/html/wp-content/themes/culture-velib
+      - ./extension/culture-velib-bandeau:/var/www/html/wp-content/plugins/culture-velib-bandeau
       - ./webhook/autoriser-hote-docker.php:/var/www/html/wp-content/mu-plugins/autoriser-hote-docker.php:ro
 
   cli:
@@ -47,8 +47,8 @@ services:
       WP_CLI_CACHE_DIR: /tmp/wp-cli-cache
     volumes:
       - wp_data:/var/www/html
-      - ./theme/rayons-dill:/var/www/html/wp-content/themes/rayons-dill
-      - ./extension/rayons-bandeau:/var/www/html/wp-content/plugins/rayons-bandeau
+      - ./theme/culture-velib:/var/www/html/wp-content/themes/culture-velib
+      - ./extension/culture-velib-bandeau:/var/www/html/wp-content/plugins/culture-velib-bandeau
       - ./webhook/autoriser-hote-docker.php:/var/www/html/wp-content/mu-plugins/autoriser-hote-docker.php:ro
       - ./sauvegardes:/sauvegardes
       - ./:/projet:ro

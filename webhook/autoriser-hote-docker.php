@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Rayons d'Ill — Webhooks vers la machine hôte (développement)
+ * Plugin Name: Culture Vélib — Webhooks vers la machine hôte (développement)
  * Description: WordPress refuse d'appeler une adresse privée (protection SSRF). En local, le récepteur de
  *              webhooks tourne sur la machine hôte : on autorise uniquement host.docker.internal.
  *              Inutile en production, où le webhook vise une adresse publique en HTTPS.
