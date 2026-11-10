@@ -40,8 +40,8 @@ add_action(
 		wp_enqueue_style( 'cv-bandeau' );
 		wp_add_inline_style(
 			'cv-bandeau',
-			'.cv-bandeau{background:#1F4D45;color:#fff;text-align:center;padding:.55rem 1rem;font:600 .9rem/1.4 Inter,system-ui,sans-serif}
-			 .cv-bandeau .amount{color:#F5EFE4;text-decoration:underline #B8503A 2px}'
+			'.cv-bandeau{background:#0D1B2A;color:#fff;text-align:center;padding:.55rem 1rem;font:600 .9rem/1.4 Montserrat,Arial,sans-serif}
+			 .cv-bandeau .amount{color:#40C9FF;font-weight:800}'
 		);
 	}
 );

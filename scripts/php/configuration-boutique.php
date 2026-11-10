@@ -15,11 +15,11 @@ $racine = rtrim( $args[0] ?? dirname( __DIR__, 2 ), '/\\' );
 /* ---------- 1. Réglages généraux, prix TTC, stock, e-mails ---------- */
 $options = array(
 	'blogname'                                => "Culture Vélib",
-	'blogdescription'                         => "Roule en ville, on s'occupe du reste.",
+	'blogdescription'                         => 'Ton expert vélo à Orléans · Vélos, équipements, services',
 	'timezone_string'                         => 'Europe/Paris',
-	'woocommerce_store_address'               => '12 quai des Bateliers',
-	'woocommerce_store_city'                  => 'Strasbourg',
-	'woocommerce_store_postcode'              => '67000',
+	'woocommerce_store_address'               => '8 quai du Châtelet',
+	'woocommerce_store_city'                  => 'Orléans',
+	'woocommerce_store_postcode'              => '45000',
 	'woocommerce_default_country'             => 'FR',
 	'woocommerce_allowed_countries'           => 'specific',
 	'woocommerce_specific_allowed_countries'  => array( 'FR' ),
@@ -46,16 +46,16 @@ $options = array(
 	// E-mails aux couleurs de la charte.
 	'woocommerce_email_from_name'             => "Culture Vélib",
 	'woocommerce_email_from_address'          => 'bonjour@culture-velib.example',
-	'woocommerce_email_base_color'            => '#1F4D45',
-	'woocommerce_email_background_color'      => '#F5EFE4',
+	'woocommerce_email_base_color'            => '#0D1B2A',
+	'woocommerce_email_background_color'      => '#E9EEF2',
 	'woocommerce_email_body_background_color' => '#FFFFFF',
-	'woocommerce_email_text_color'            => '#1C1C1A',
-	'woocommerce_email_footer_text'           => "Culture Vélib · 12 quai des Bateliers, 67000 Strasbourg · Roule en ville, on s'occupe du reste.",
+	'woocommerce_email_text_color'            => '#0D1B2A',
+	'woocommerce_email_footer_text'           => 'Culture Vélib · Vélos, équipements, services · 8 quai du Châtelet, 45000 Orléans',
 );
 foreach ( $options as $cle => $valeur ) {
 	update_option( $cle, $valeur );
 }
-// Adresses en français : /produit/velo-de-ville-kleber/ plutôt que /product/...
+// Adresses en français : /produit/velo-de-ville-martroi/ plutôt que /product/...
 update_option(
 	'woocommerce_permalinks',
 	array_merge(
@@ -109,7 +109,7 @@ if ( ! $zone ) {
 		array( 'flat_rate', array( 'title' => 'Colissimo à domicile', 'tax_status' => 'taxable', 'cost' => '6.583333' ) ),
 		array( 'flat_rate', array( 'title' => 'Colissimo en point relais', 'tax_status' => 'taxable', 'cost' => '4.083333' ) ),
 		array( 'free_shipping', array( 'title' => 'Livraison offerte dès 80 €', 'requires' => 'min_amount', 'min_amount' => '80', 'ignore_discounts' => 'no' ) ),
-		array( 'local_pickup', array( 'title' => "Retrait à l'atelier (quai des Bateliers)", 'tax_status' => 'none', 'cost' => '0' ) ),
+		array( 'local_pickup', array( 'title' => "Retrait à l'atelier (quai du Châtelet)", 'tax_status' => 'none', 'cost' => '0' ) ),
 	);
 	foreach ( $methodes as list( $type, $reglages ) ) {
 		$instance = $zone->add_shipping_method( $type );
@@ -195,3 +195,70 @@ if ( isset( $ids['politique-de-confidentialite'] ) ) {
 }
 update_option( 'woocommerce_checkout_terms_and_conditions_checkbox_text', "J'ai lu et j'accepte les [terms] de Culture Vélib." );
 WP_CLI::success( count( $ids ) . ' pages légales publiées ; CGV et confidentialité reliées à WooCommerce.' );
+
+/* ---------- 7. Pages de WooCommerce en français, contenu de démonstration retiré ---------- */
+$pages_wc = array(
+	'woocommerce_shop_page_id'      => array( 'Boutique', 'boutique' ),
+	'woocommerce_cart_page_id'      => array( 'Panier', 'panier' ),
+	'woocommerce_checkout_page_id'  => array( 'Commande', 'commande' ),
+	'woocommerce_myaccount_page_id' => array( 'Mon compte', 'mon-compte' ),
+);
+foreach ( $pages_wc as $option => list( $titre, $slug ) ) {
+	$id = (int) get_option( $option );
+	if ( $id && get_post( $id ) ) {
+		wp_update_post( array( 'ID' => $id, 'post_title' => $titre, 'post_name' => $slug ) );
+	}
+}
+foreach ( array( 'sample-page' => 'page', 'hello-world' => 'post' ) as $slug => $type ) {
+	$demo = get_page_by_path( $slug, OBJECT, $type );
+	if ( $demo ) {
+		wp_delete_post( $demo->ID, true );
+	}
+}
+$non_classe = get_term_by( 'slug', 'uncategorized', 'product_cat' );
+if ( $non_classe ) {
+	wp_update_term( $non_classe->term_id, 'product_cat', array( 'name' => 'Non classé', 'slug' => 'non-classe' ) );
+}
+flush_rewrite_rules();
+WP_CLI::success( 'Pages Boutique, Panier, Commande et Mon compte renommées.' );
+
+/* ---------- 8. Identité : thème, logo, icône du site, logo des e-mails ---------- */
+if ( wp_get_theme( 'culture-velib' )->exists() ) {
+	switch_theme( 'culture-velib' );
+	WP_CLI::success( 'Thème Culture Vélib activé.' );
+} else {
+	WP_CLI::warning( 'Thème culture-velib introuvable (dossier theme/ monté ?) : thème laissé tel quel.' );
+}
+
+require_once ABSPATH . 'wp-admin/includes/file.php';
+require_once ABSPATH . 'wp-admin/includes/media.php';
+require_once ABSPATH . 'wp-admin/includes/image.php';
+
+/** Importe une image de charte/web une seule fois (repérée par une méta) et renvoie son ID. */
+function cv_importer_image( $racine, $fichier, $alt ) {
+	$existant = get_posts( array( 'post_type' => 'attachment', 'meta_key' => '_cv_source', 'meta_value' => $fichier, 'fields' => 'ids', 'numberposts' => 1 ) );
+	if ( $existant ) {
+		return $existant[0];
+	}
+	$copie = wp_tempnam( $fichier );
+	copy( "$racine/charte/web/$fichier", $copie ); // le sideload déplace le fichier : on travaille sur une copie
+	$id = media_handle_sideload( array( 'name' => $fichier, 'tmp_name' => $copie ), 0, $alt );
+	if ( is_wp_error( $id ) ) {
+		WP_CLI::warning( "$fichier : " . $id->get_error_message() );
+		return 0;
+	}
+	update_post_meta( $id, '_wp_attachment_image_alt', $alt );
+	update_post_meta( $id, '_cv_source', $fichier );
+	return $id;
+}
+
+$logo  = cv_importer_image( $racine, 'logo-principal-transparent.png', "Culture Vélib, vélos, équipements, services" );
+$icone = cv_importer_image( $racine, 'icone-cv.png', 'Culture Vélib' );
+if ( $logo ) {
+	update_option( 'site_logo', $logo );
+	update_option( 'woocommerce_email_header_image', wp_get_attachment_url( $logo ) );
+}
+if ( $icone ) {
+	update_option( 'site_icon', $icone );
+}
+WP_CLI::success( 'Logo, icône du site et en-tête des e-mails en place.' );

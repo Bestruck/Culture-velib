@@ -28,7 +28,7 @@ createServer((req, res) => {
       .join('');
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     return res.end(`<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="5"><title>Webhooks Culture Vélib</title>
-<style>body{font-family:Inter,system-ui,sans-serif;background:#F5EFE4;color:#1C1C1A;padding:2rem}h1{color:#1F4D45}table{border-collapse:collapse;background:#fff}td,th{padding:.5rem 1rem;border-bottom:1px solid #ddd;text-align:left}th{background:#1F4D45;color:#fff}</style>
+<style>body{font-family:Montserrat,Arial,sans-serif;background:#E9EEF2;color:#0D1B2A;padding:2rem}h1{color:#0D1B2A}table{border-collapse:collapse;background:#fff}td,th{padding:.5rem 1rem;border-bottom:1px solid #ddd;text-align:left}th{background:#0D1B2A;color:#fff}</style>
 <h1>Commandes reçues par webhook</h1><table><tr><th>Reçu à</th><th>Commande</th><th>Client</th><th>Total</th><th>Statut</th><th>Paiement</th></tr>${lignes || '<tr><td colspan="6">En attente d’une commande…</td></tr>'}</table>`);
   }
 

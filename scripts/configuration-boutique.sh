@@ -21,7 +21,6 @@ reessayer() { for i in 1 2 3; do "$@" && return 0; echo "Échec, nouvel essai ($
 
 reessayer $WP language core install fr_FR --activate
 $WP rewrite structure '/%postname%/'
-$WP theme activate twentytwentyfive || true
 $WP plugin is-active woocommerce || reessayer $WP plugin install woocommerce --activate
 reessayer $WP language plugin install woocommerce fr_FR
 
