@@ -1,0 +1,169 @@
+{
+  "info": {
+    "name": "Rayons d'Ill — Store API WooCommerce",
+    "description": "Parcours d'achat complet par l'API : catalogue, panier, ajout, commande, puis preuve que l'API d'administration est protégée. Lancer les requêtes dans l'ordre (Run collection).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "cartToken", "value": "" },
+    { "key": "productId", "value": "" },
+    { "key": "orderId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. Lister les produits",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Statut 200', () => pm.response.to.have.status(200));",
+              "const produits = pm.response.json();",
+              "pm.test('Au moins 12 produits publiés', () => pm.expect(produits.length).to.be.at.least(12));",
+              "pm.test('Prix en centimes (currency_minor_unit = 2, prix entier)', () => {",
+              "  const p = produits[0].prices;",
+              "  pm.expect(p.currency_code).to.eql('EUR');",
+              "  pm.expect(p.currency_minor_unit).to.eql(2);",
+              "  pm.expect(p.price).to.match(/^\\d+$/);",
+              "});",
+              "const achetable = produits.find(p => p.type === 'simple' && p.is_purchasable && p.is_in_stock);",
+              "pm.collectionVariables.set('productId', achetable.id);",
+              "console.log(`Produit choisi : ${achetable.name} à ${achetable.prices.price / 100} €`);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/wp-json/wc/store/v1/products?per_page=50",
+          "host": ["{{baseUrl}}"],
+          "path": ["wp-json", "wc", "store", "v1", "products"],
+          "query": [{ "key": "per_page", "value": "50" }]
+        }
+      }
+    },
+    {
+      "name": "2. Ouvrir un panier",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Statut 200', () => pm.response.to.have.status(200));",
+              "pm.test('En-tête Cart-Token présent', () => pm.response.to.have.header('Cart-Token'));",
+              "pm.collectionVariables.set('cartToken', pm.response.headers.get('Cart-Token'));",
+              "pm.test('Panier vide au départ', () => pm.expect(pm.response.json().items_count).to.eql(0));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/wp-json/wc/store/v1/cart",
+          "host": ["{{baseUrl}}"],
+          "path": ["wp-json", "wc", "store", "v1", "cart"]
+        }
+      }
+    },
+    {
+      "name": "3. Ajouter un produit au panier",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Statut 201', () => pm.response.to.have.status(201));",
+              "pm.test('Le jeton a bien été envoyé dans la requête', () => {",
+              "  pm.expect(pm.request.headers.get('Cart-Token')).to.eql(pm.collectionVariables.get('cartToken'));",
+              "});",
+              "pm.test('Le panier contient le produit', () => {",
+              "  const panier = pm.response.json();",
+              "  pm.expect(panier.items.map(i => i.id)).to.include(Number(pm.collectionVariables.get('productId')));",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Cart-Token", "value": "{{cartToken}}" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"id\": {{productId}},\n  \"quantity\": 2\n}" },
+        "url": {
+          "raw": "{{baseUrl}}/wp-json/wc/store/v1/cart/add-item",
+          "host": ["{{baseUrl}}"],
+          "path": ["wp-json", "wc", "store", "v1", "cart", "add-item"]
+        }
+      }
+    },
+    {
+      "name": "4. Passer la commande (virement)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Statut 200', () => pm.response.to.have.status(200));",
+              "const commande = pm.response.json();",
+              "pm.test('Une commande a été créée', () => pm.expect(commande.order_id).to.be.above(0));",
+              "pm.test('Virement : statut en attente (on-hold)', () => pm.expect(commande.status).to.eql('on-hold'));",
+              "pm.collectionVariables.set('orderId', commande.order_id);",
+              "console.log(`Commande n° ${commande.order_id} : à vérifier dans WooCommerce > Commandes et dans Mailpit`);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Cart-Token", "value": "{{cartToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"billing_address\": {\n    \"first_name\": \"Camille\",\n    \"last_name\": \"Test\",\n    \"address_1\": \"1 rue Fictive\",\n    \"city\": \"Strasbourg\",\n    \"postcode\": \"67000\",\n    \"country\": \"FR\",\n    \"email\": \"camille.test@example.com\",\n    \"phone\": \"0300000000\"\n  },\n  \"shipping_address\": {\n    \"first_name\": \"Camille\",\n    \"last_name\": \"Test\",\n    \"address_1\": \"1 rue Fictive\",\n    \"city\": \"Strasbourg\",\n    \"postcode\": \"67000\",\n    \"country\": \"FR\"\n  },\n  \"payment_method\": \"bacs\",\n  \"customer_note\": \"Commande passée depuis Postman\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/wp-json/wc/store/v1/checkout",
+          "host": ["{{baseUrl}}"],
+          "path": ["wp-json", "wc", "store", "v1", "checkout"]
+        }
+      }
+    },
+    {
+      "name": "5. Lire les commandes sans clé (doit échouer)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Statut 401 : sans clé, pas de données clients', () => pm.response.to.have.status(401));",
+              "pm.test('Code woocommerce_rest_cannot_view', () => pm.expect(pm.response.json().code).to.eql('woocommerce_rest_cannot_view'));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/wp-json/wc/v3/orders",
+          "host": ["{{baseUrl}}"],
+          "path": ["wp-json", "wc", "v3", "orders"]
+        }
+      }
+    }
+  ]
+}
