@@ -6,26 +6,23 @@ Il reste ce qui se fait à la souris, et ce qui doit venir de vous.
 
 ## Semaine 1 (avant le 15/11)
 - [ ] Remplacer `NOM Prénom` dans `README.md` et `NOTE.md`. Relire la note et la reformuler avec vos mots.
-- [ ] Créer le dépôt GitHub, `git remote add origin …`, `git push -u origin main`, inviter le groupe.
+- [x] Créer le dépôt GitHub (https://github.com/Bestruck/Culture-velib). Reste : inviter le groupe.
 - [ ] Installer **Local** (localwp.com), créer le site `boutique` (adresse `http://boutique.local`),
       administrateur **`gerance-cv`** (pas `admin`).
 - [ ] Local > clic droit > *Open site shell*, aller à la racine du dépôt, puis :
       `"C:\Program Files\Git\bin\bash.exe" scripts/configuration-boutique.sh`
 
 ## Semaine 2 (16–22/11) — design et photos
-- [ ] Exporter `charte/logo.svg` et `charte/icone.svg` en **PNG transparent** (WordPress refuse le SVG) :
-      logo 720 px de large, icône 512 × 512. Ouvrir le SVG dans Figma ou Inkscape, exporter.
+- [x] Logos détourés, thème Culture Vélib (palette, Montserrat, en-tête, pied de page, accueil en
+      blocs, fiche produit et boutique retouchées), logo des e-mails, vérification à 390 px.
 - [ ] 18 photos libres de droits (Unsplash, Pexels), **carrées 1200 × 1200**, nommées comme dans
       `catalogue/images/sources.csv` ; remplir les colonnes auteur et source ; lancer
       `bash scripts/images-catalogue.sh` ; recopier les sources dans le tableau du README.
-- [ ] Apparence > Éditeur > Styles : palette + polices (Bricolage Grotesque, Inter) depuis la bibliothèque de polices.
-- [ ] En-tête (logo, menu, compte, mini-panier) et pied de page (adresse, liens légaux).
-- [ ] Accueil en blocs : bannière + bouton, produits mis en avant, catégories, réassurance.
-- [ ] Retoucher les modèles *Produit unique* et *Catalogue de produits* ; noter le pourquoi dans le README.
-- [ ] Vérifier à 390 px (outils de développement du navigateur).
-- [ ] Logo PNG dans WooCommerce > Réglages > E-mails (image d'en-tête).
-- [ ] Extension *Create Block Theme* > Exporter le thème, nom **Culture Vélib**, dézipper dans
-      `theme/culture-velib/` (le dossier monté par Docker), commit.
+- [ ] Ouvrir **Apparence > Éditeur**, ajuster à votre goût (textes de la bannière, ordre des
+      sections…), puis *Create Block Theme* > « Enregistrer les changements dans le thème » pour que
+      vos retouches arrivent dans `theme/culture-velib/`, et commit. Le sujet demande que le thème
+      vienne de l'éditeur de site : faites-y au moins une vraie retouche vous-mêmes.
+- [ ] Captures accueil, fiche produit, vue téléphone, e-mail de commande.
 
 ## Semaine 3 (23–29/11) — vendre
 - [ ] Stripe en mode test (voir README partie 4). Clés de test : jamais dans Git.

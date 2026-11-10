@@ -132,7 +132,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"billing_address\": {\n    \"first_name\": \"Camille\",\n    \"last_name\": \"Test\",\n    \"address_1\": \"1 rue Fictive\",\n    \"city\": \"Strasbourg\",\n    \"postcode\": \"67000\",\n    \"country\": \"FR\",\n    \"email\": \"camille.test@example.com\",\n    \"phone\": \"0300000000\"\n  },\n  \"shipping_address\": {\n    \"first_name\": \"Camille\",\n    \"last_name\": \"Test\",\n    \"address_1\": \"1 rue Fictive\",\n    \"city\": \"Strasbourg\",\n    \"postcode\": \"67000\",\n    \"country\": \"FR\"\n  },\n  \"payment_method\": \"bacs\",\n  \"customer_note\": \"Commande passée depuis Postman\"\n}"
+          "raw": "{\n  \"billing_address\": {\n    \"first_name\": \"Camille\",\n    \"last_name\": \"Test\",\n    \"address_1\": \"1 rue Fictive\",\n    \"city\": \"Orléans\",\n    \"postcode\": \"45000\",\n    \"country\": \"FR\",\n    \"email\": \"camille.test@example.com\",\n    \"phone\": \"0200000000\"\n  },\n  \"shipping_address\": {\n    \"first_name\": \"Camille\",\n    \"last_name\": \"Test\",\n    \"address_1\": \"1 rue Fictive\",\n    \"city\": \"Orléans\",\n    \"postcode\": \"45000\",\n    \"country\": \"FR\"\n  },\n  \"payment_method\": \"bacs\",\n  \"customer_note\": \"Commande passée depuis Postman\"\n}"
         },
         "url": {
           "raw": "{{baseUrl}}/wp-json/wc/store/v1/checkout",

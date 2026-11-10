@@ -1,6 +1,6 @@
 # Culture Vélib — boutique WooCommerce
 
-Magasin-atelier de vélos **fictif** à Strasbourg : vélos de ville, électriques et cargos, accessoires,
+Magasin-atelier de vélos **fictif** à Orléans : vélos de ville, électriques et cargos, accessoires,
 révisions. Projet B3.2 CMS, e-commerce & mobile — IRIS Mastère 1.
 
 **Groupe :** NOM Prénom 1 · NOM Prénom 2 · NOM Prénom 3
@@ -54,28 +54,40 @@ bash scripts/images-catalogue.sh         # photos + textes alternatifs + galerie
 Avec Docker, préfixer par `WP="docker compose run --rm -T cli wp" PROJET=/projet`.
 Les deux scripts sont rejouables : ils mettent à jour sans créer de doublons.
 
-Puis activer le thème exporté : Apparence > Thèmes > **Culture Vélib**.
+Le script active aussi le thème **Culture Vélib** et met en place le logo, l'icône du site et le logo
+des e-mails.
 
 ---
 
 ## Partie 2 — Identité et design
 
-Thème en blocs dérivé de Twenty Twenty-Five, modifié dans **Apparence > Éditeur**, exporté avec
-l'extension *Create Block Theme* dans [`theme/culture-velib/`](theme/).
+Charte complète, contrastes et kit de logos : [`charte/CHARTE.md`](charte/CHARTE.md).
 
-- **Styles** : palette Vert Ill `#1F4D45`, Grès rose `#B8503A`, Crème `#F5EFE4` ; titres en
-  Bricolage Grotesque, texte en Inter (bibliothèque de polices de WordPress). Réglés une seule fois
-  dans Styles, jamais bloc par bloc.
-- **En-tête** (élément de modèle) : logo, menu, recherche, compte client, mini-panier.
-- **Pied de page** : adresse de l'atelier, horaires, liens vers les mentions légales, CGV, confidentialité.
-- **Accueil en blocs** : bannière « Roule en ville, on s'occupe du reste » + bouton vers les vélos,
-  produits mis en avant, les trois catégories, bande de réassurance (livraison offerte dès 80 €,
-  retrait gratuit à l'atelier, paiement sécurisé, 14 jours pour changer d'avis).
-- **Fiche produit retouchée** : *[à compléter : par ex. bloc « Révision offerte à 2 mois » sous le prix
-  des vélos, parce que c'est l'argument qui fait acheter en magasin plutôt qu'en ligne]*.
-- **Page boutique retouchée** : *[à compléter : par ex. filtres par catégorie et prix en colonne de gauche]*.
-- **E-mails** (WooCommerce > Réglages > E-mails) : couleurs de la charte appliquées par
-  `configuration-boutique.php`, logo PNG en image d'en-tête.
+Thème en blocs **enfant de Twenty Twenty-Five** : [`theme/culture-velib/`](theme/culture-velib/).
+Tout passe par `theme.json`, donc par **Apparence > Éditeur > Styles** : rien n'est réglé bloc par bloc.
+
+- **Styles** : palette bleu nuit `#0D1B2A`, bleu Vélib `#0099FF`, cyan `#40C9FF`, gris clair `#E9EEF2`,
+  plus un bleu lien `#0077CC` dérivé pour l'accessibilité ; **Montserrat** embarquée dans le thème
+  (titres H1/H2 en 900 italique majuscule, comme le logo). Boutons bleu nuit, survol bleu Vélib.
+- **En-tête** (élément de modèle) : bloc *Logo du site*, menu des trois rayons + Boutique, compte
+  client, mini-panier ; liseré bleu Vélib. Menu en burger sur téléphone.
+- **Pied de page** (élément de modèle) : logo horizontal sombre, adresse et horaires, liens vers
+  le compte, les mentions légales, les CGV et la confidentialité.
+- **Accueil en blocs** ([`front-page.html`](theme/culture-velib/templates/front-page.html)) : bannière
+  « Ton expert vélo à Orléans » avec deux appels à l'action, les trois rayons, les produits mis en
+  avant (« Le choix de l'atelier »), bande de réassurance bleu nuit (livraison offerte dès 80 €,
+  révision en 48 h, 14 jours pour changer d'avis, paiement sécurisé).
+- **Fiche produit retouchée** : encadré « Le plus Culture Vélib » sous le bouton d'achat (montage et
+  réglage offerts, première révision offerte, retrait gratuit). *Pourquoi* : face aux grands sites en
+  ligne, le service de l'atelier est la seule raison d'acheter chez un commerçant local ; il doit se
+  lire au moment où l'on hésite à cliquer. Prix en grand, en bleu, gras italique.
+- **Page boutique retouchée** : boutons des trois rayons au-dessus de la grille, et le même modèle
+  pour les pages de catégorie. *Pourquoi* : avec trois rayons seulement, un clic vaut mieux qu'une
+  colonne de filtres, et ça marche aussi sur téléphone.
+- **Téléphone (390 px)** : vérifié, aucun défilement horizontal ; le grand logo de la bannière est
+  masqué pour ne pas doubler celui de l'en-tête.
+- **E-mails** (WooCommerce > Réglages > E-mails) : logo en en-tête, bleu nuit et gris clair,
+  appliqués par `configuration-boutique.php`.
 - **Bonus extension maison** : bandeau « Livraison offerte dès 80 € » qui affiche ce qu'il reste à
   ajouter au panier ([47 lignes](extension/culture-velib-bandeau/culture-velib-bandeau.php)).
 
@@ -86,11 +98,11 @@ l'extension *Create Block Theme* dans [`theme/culture-velib/`](theme/).
 
 | Exigence | Où |
 |---|---|
-| Produit variable | Vélo de ville « Kléber » : 2 attributs (Taille S/M/L, Couleur Vert Ill/Grès rose), 6 variations avec prix et stock propres ; L Grès rose à 0 |
+| Produit variable | Vélo de ville « Martroi » : 2 attributs (Taille S/M/L, Couleur Bleu nuit/Bleu Vélib), 6 variations avec prix et stock propres ; L Bleu Vélib à 0 |
 | Promotion datée | Antivol en U : 59,90 € → 44,90 € du 20/11 au 31/12/2026 |
 | Rupture volontaire | Vélo enfant « Moustique », stock 0 |
 | UGS et stock | UGS `CV-…` sur chaque produit et variation, stock géré partout |
-| Galeries | Kléber (3 photos), Krutenau (2), Petite France (2) |
+| Galeries | Martroi (3 photos), Loire (2), Bourgogne (2) |
 
 ### Sources des photos
 

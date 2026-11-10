@@ -1,6 +1,6 @@
 # Note de cadrage — Culture Vélib
 
-*Magasin-atelier de vélos fictif à Strasbourg. Groupe : NOM 1, NOM 2, NOM 3.*
+*Magasin-atelier de vélos fictif à Orléans. Groupe : NOM 1, NOM 2, NOM 3.*
 
 ## 1. Ce qu'un CMS fait à notre place
 
