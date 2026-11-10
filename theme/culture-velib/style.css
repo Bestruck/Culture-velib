@@ -1,0 +1,65 @@
+/*
+Theme Name: Culture Vélib
+Theme URI: https://github.com/Bestruck/Culture-velib
+Description: Thème en blocs de la boutique Culture Vélib (projet étudiant, enseigne fictive), dérivé de Twenty Twenty-Five. Couleurs et typographie réglées dans theme.json, Montserrat embarquée.
+Author: Groupe Culture Vélib
+Template: twentytwentyfive
+Version: 1.0.0
+Requires at least: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: culture-velib
+*/
+
+/* Prix en bleu, gras italique comme le logo. Bleu « lien » #0077CC et pas le bleu Vélib :
+   #0099FF n'atteint que 2,6:1 sur le gris des cartes, sous le minimum de 3:1 pour les gros textes. */
+.wc-block-components-product-price,
+.wp-block-woocommerce-product-price {
+	color: var(--wp--preset--color--accent-5);
+	font-weight: 800;
+	font-style: italic;
+}
+
+/* Les cartes produits respirent sur fond gris clair */
+.wc-block-product-template .wc-block-product {
+	background: var(--wp--preset--color--accent-3);
+	border-radius: 12px;
+	padding: 0 0 var(--wp--preset--spacing--20);
+	overflow: hidden;
+}
+
+/* Titres-liens (cartes rayons, produits) : bleu nuit, soulignés au survol seulement */
+.wp-block-heading a,
+.wc-block-product .wp-block-post-title a {
+	color: var(--wp--preset--color--contrast);
+	text-decoration: none;
+}
+.wp-block-heading a:hover,
+.wc-block-product .wp-block-post-title a:hover {
+	color: var(--wp--preset--color--accent-5);
+	text-decoration: underline;
+}
+.wc-block-product .wp-block-post-title {
+	padding: 0 var(--wp--preset--spacing--20);
+}
+
+/* Le pied de page bleu nuit colle au contenu (pas de bande blanche au-dessus) */
+.wp-site-blocks > footer {
+	margin-block-start: 0;
+}
+
+/* Badge promo aux couleurs de la charte */
+.wc-block-components-product-sale-badge {
+	background: var(--wp--preset--color--accent-1) !important;
+	color: var(--wp--preset--color--contrast) !important;
+	border: 0 !important;
+	font-weight: 800;
+}
+
+/* Sur téléphone, le grand logo de la bannière ferait doublon avec celui de l'en-tête */
+@media (max-width: 781px) {
+	.cv-masque-mobile {
+		display: none;
+	}
+}

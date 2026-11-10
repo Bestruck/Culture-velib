@@ -1,0 +1,104 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "base", "name": "Blanc", "color": "#FFFFFF" },
+				{ "slug": "contrast", "name": "Bleu nuit", "color": "#0D1B2A" },
+				{ "slug": "accent-1", "name": "Bleu Vélib", "color": "#0099FF" },
+				{ "slug": "accent-2", "name": "Cyan", "color": "#40C9FF" },
+				{ "slug": "accent-3", "name": "Gris clair", "color": "#E9EEF2" },
+				{ "slug": "accent-4", "name": "Anthracite", "color": "#222222" },
+				{ "slug": "accent-5", "name": "Bleu lien (accessible)", "color": "#0077CC" },
+				{ "slug": "accent-6", "name": "Gris très clair", "color": "#F5F8FA" }
+			]
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"name": "Montserrat",
+					"slug": "montserrat",
+					"fontFamily": "Montserrat, Arial, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Montserrat",
+							"fontStyle": "normal",
+							"fontWeight": "100 900",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/montserrat-latin-wght-normal.woff2" ]
+						},
+						{
+							"fontFamily": "Montserrat",
+							"fontStyle": "italic",
+							"fontWeight": "100 900",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/montserrat-latin-wght-italic.woff2" ]
+						}
+					]
+				}
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var:preset|color|base",
+			"text": "var:preset|color|contrast"
+		},
+		"typography": {
+			"fontFamily": "var:preset|font-family|montserrat",
+			"fontWeight": "400",
+			"letterSpacing": "0"
+		},
+		"elements": {
+			"link": {
+				"color": { "text": "var:preset|color|accent-5" },
+				":hover": { "color": { "text": "var:preset|color|contrast" } }
+			},
+			"heading": {
+				"color": { "text": "var:preset|color|contrast" },
+				"typography": {
+					"fontFamily": "var:preset|font-family|montserrat",
+					"fontWeight": "700",
+					"letterSpacing": "-0.01em"
+				}
+			},
+			"h1": {
+				"typography": { "fontWeight": "900", "fontStyle": "italic", "textTransform": "uppercase", "letterSpacing": "-0.02em", "lineHeight": "1.05" }
+			},
+			"h2": {
+				"typography": { "fontWeight": "800", "fontStyle": "italic", "textTransform": "uppercase", "letterSpacing": "-0.01em", "lineHeight": "1.1" }
+			},
+			"button": {
+				"color": {
+					"background": "var:preset|color|contrast",
+					"text": "var:preset|color|base"
+				},
+				"border": { "radius": "8px" },
+				"typography": { "fontWeight": "700", "fontFamily": "var:preset|font-family|montserrat" },
+				":hover": {
+					"color": {
+						"background": "var:preset|color|accent-1",
+						"text": "var:preset|color|contrast"
+					}
+				},
+				":focus": {
+					"outline": { "color": "var:preset|color|accent-1", "offset": "2px", "style": "solid", "width": "2px" }
+				}
+			}
+		},
+		"blocks": {
+			"core/site-title": {
+				"typography": { "fontWeight": "900", "fontStyle": "italic", "textTransform": "uppercase" }
+			},
+			"core/navigation": {
+				"typography": { "fontWeight": "600" }
+			}
+		}
+	},
+	"templateParts": [
+		{ "name": "header", "title": "En-tête", "area": "header" },
+		{ "name": "footer", "title": "Pied de page", "area": "footer" }
+	],
+	"customTemplates": []
+}

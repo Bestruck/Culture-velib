@@ -1,0 +1,35 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"0"},"blockGap":"0"}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="margin-top:0"><!-- wp:pattern {"slug":"culture-velib/banniere"} /-->
+
+<!-- wp:pattern {"slug":"culture-velib/categories"} /-->
+
+<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading {"textAlign":"center","align":"wide"} -->
+<h2 class="wp-block-heading alignwide has-text-align-center">Le choix de l'atelier</h2>
+<!-- /wp:heading -->
+
+<!-- wp:woocommerce/product-collection {"queryId":1,"query":{"perPage":4,"pages":1,"offset":0,"postType":"product","order":"desc","orderBy":"date","search":"","exclude":[],"inherit":false,"taxQuery":{},"isProductCollectionBlock":true,"featured":true,"woocommerceOnSale":false,"woocommerceStockStatus":["instock","outofstock","onbackorder"],"woocommerceAttributes":[],"woocommerceHandPickedProducts":[]},"tagName":"div","displayLayout":{"type":"flex","columns":4,"shrinkColumns":true},"dimensions":{"widthType":"fill"},"collection":"woocommerce/product-collection/featured","hideControls":["inherit","featured"],"queryContextIncludes":["collection"],"align":"wide"} -->
+<div class="wp-block-woocommerce-product-collection alignwide"><!-- wp:woocommerce/product-template -->
+<!-- wp:woocommerce/product-image {"showSaleBadge":true,"imageSizing":"thumbnail","isDescendentOfQueryLoop":true} /-->
+
+<!-- wp:post-title {"textAlign":"center","level":3,"isLink":true,"fontSize":"medium","__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
+
+<!-- wp:woocommerce/product-price {"textAlign":"center","isDescendentOfQueryLoop":true,"fontSize":"medium"} /-->
+
+<!-- wp:woocommerce/product-button {"textAlign":"center","isDescendentOfQueryLoop":true,"fontSize":"small"} /-->
+<!-- /wp:woocommerce/product-template --></div>
+<!-- /wp:woocommerce/product-collection -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/boutique/">Toute la boutique</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group -->
+
+<!-- wp:pattern {"slug":"culture-velib/reassurance"} /--></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
